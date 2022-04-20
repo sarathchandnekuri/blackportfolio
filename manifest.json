@@ -1,0 +1,26 @@
+{
+  "short_name": "Portfolio",
+  "name": "Sarath Chand Portfolio",
+  "start_url": ".",
+  "display": "standalone",
+  "description": "A Portfolio website designed and developed by Sarath Chand.",
+  "theme_color": "#122d34",
+  "background_color": "#f8feff",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
