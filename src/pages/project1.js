@@ -1,33 +1,25 @@
 import React, {useEffect } from 'react';
-import vp1 from '../images/vp1.jpg';
-import vp2 from '../images/vp2.jpg';
-import vp3 from '../images/vp3.jpg';
-import covaclofi from '../images/covac-lofi.svg';
-import covaclofiw from '../images/covac-lofi-w.PNG';
-import link from '../icons/link.svg';
-import covachifi from '../icons/covachifi.svg';
-import covacm1 from '../images/covacm-1.svg';
-import covacm2 from '../images/covacm2.svg';
-import covacm3 from '../images/covacm3.svg';
-import mom from '../images/mom.png';
-import ak from '../images/ak.png';
+
+
 import { Link } from 'react-router-dom';
-import mia from '../images/mia-thumbnail.png';
-import rogalik from '../images/rogalik-thumbnail.png';
-import covacDeck from '../docs/Vaccine Case study Deck.pdf';
-import phone from '../icons/phone.svg';
+
 import gsap from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {motion} from 'framer-motion';
 import CursorFollower from '../components/cursorFollower';
 
+import { CDN } from '../config';
+
+
 function Project1() {
     
-    //window.onunload = function(){ window.scrollTo(0,0); }
+
+    gsap.registerPlugin(ScrollTrigger);
+    
 
     useEffect( () => {
-        gsap.registerPlugin(ScrollTrigger);
-
+        
+        
         gsap.from( ".cover-bg img", {duration:1, y:-50,scale:0.9} )
         gsap.from(".main-header span", {duration:0.8, delay:1,opacity:0, stagger:0.2, y:"80%",ease: "back.out(1.7)"})
         gsap.from( ".project-container p",{ 
@@ -35,38 +27,73 @@ function Project1() {
                 trigger:".project-container p"
         },duration:0.5, opacity:0.5,x:"20px" })
 
-        gsap.to( ".lo-fi-img",{ 
-            scrollTrigger:{
-                trigger:".lo-fi-img",
-                scrub:true,
-                start:"20% 80%",
-                end:"+=254",
-        }, height:"80vh", marginLeft:"60px" })
 
-        gsap.utils.toArray(".h-1, .h-2, .h-3, .h-4").forEach(head =>{
-            ScrollTrigger.create({
-                trigger:head,
-                start:"top 50%",
-                end:"bottom 50%",
-                onEnter:() => gsap.to("body", {backgroundColor:"#122d34", color:"#FCE264", overwrite:'auto'}),
-                onLeave:() => gsap.to("body", {backgroundColor:"#f8feff", color:"#122d34", overwrite:'auto'}),
-    
-                onEnterBack:() => gsap.to("body", {backgroundColor:"#122d34", color:"#FCE264", overwrite:'auto'}),
-                onLeaveBack:() => gsap.to("body", {backgroundColor:"#f8feff", color:"#122d34", overwrite:'auto'})
-            });
-        })
+        
+        gsap.to(".us-b-a-left",{
+            scrollTrigger:{
+                trigger:".us-b-a-left",
+                start:"top 70%",
+                scrub:true,
+                end:"+=120"
+        }, transform:"translate(0px, 0px)"})
+        gsap.to(".us-b-a-right",{
+            scrollTrigger:{
+                trigger:".us-b-a-left",
+                start:"top 70%",
+                scrub:true,
+                end:"+=120"
+        }, transform:"translate(0px, 0px)"})
+        gsap.to(".us-b-a-left p",{
+            scrollTrigger:{
+                trigger:".us-b-a-left p",
+                start:"top 70%",
+                scrub:true,
+                end:"+=120"
+        }, transform:"translate(0px, 0px)"})
+
+        gsap.to(".us-b-a-left-2",{
+            scrollTrigger:{
+                trigger:".us-b-a-left-2",
+                start:"top 70%",
+                scrub:true,
+                end:"+=120"
+        }, transform:"translate(0px, 0px)"})
+        gsap.to(".us-b-a-right-2",{
+            scrollTrigger:{
+                trigger:".us-b-a-left-2",
+                start:"top 70%",
+                scrub:true,
+                end:"+=120"
+        }, transform:"translate(0px, 0px)"})
+        gsap.to(".us-b-a-left-2 p",{
+            scrollTrigger:{
+                trigger:".us-b-a-left-2 p",
+                start:"top 70%",
+                scrub:true,
+                end:"+=120"
+        }, transform:"translate(0px, 0px)"})
+        
+        
 
     }, [])
 
+    
+    function refreshST(){
+        ScrollTrigger.refresh(true);
+    }; 
+    setTimeout(()=>{
+        refreshST()
+    },2000) 
 
     
      
     return (
         <div><CursorFollower/>
-        <motion.div
+
+        <motion.div 
         initial={{opacity:0}}
         animate={{opacity:1}}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1.5 }}
         exit={{opacity:0}}
          className="homer">
             
@@ -74,18 +101,35 @@ function Project1() {
             <div className="p1"></div>
             <div className="p1-cover-image">
                 <div className="cover-bg">
-                    <img src={phone} alt="" />
+                    <img src={`${CDN}/icons/phone.svg`} alt="" />
                     <div className="heading"> 
                         <div className="headingflex">
                         <p> Ca<span className="backtext">s</span>e&nbsp;</p><p>S<span className="backtext">t</span>udy                                
                         </p>
                         </div>
                         
-                        <h1 className="main-header">
-                            <span>Vaccination </span>
+                        <div className='heading-footer'>
+
+                        <div className='res-d-none'>
+                        <b style={{textDecoration:'underline'}}>Role:</b> UI & UX Designer
+                        </div>
+                        
+                        
+                        <div style={{display:'flex', alignItems:'center'}}>
+
+                        <b className='res-d-none' style={{textDecoration:'underline'}}>Project: </b>
+                        <h2 className="main-header">
+                            <span> Vaccination </span>
                             <span>Booking </span>
                             <span>App </span>
-                        </h1>
+                        </h2>
+                        </div>
+
+                        <div className='res-d-none'>
+                             <a href={`${CDN}/Vaccine_Case_Study.pdf`} target="_blank" rel="noreferrer" className="deck-btn">PITCH DECK</a>
+                        </div>
+
+                        </div>
                     </div>
                     
                 </div>
@@ -230,7 +274,7 @@ function Project1() {
                     </h4>
                     <div className="persona-space">
                         <div className="p-details">
-                            <img src={ak} alt="ak" />
+                            <img src={`${CDN}/images/images/ak.png`} alt="ak" />
                             <div className="details">
                                 <ul style={{listStyle:"none"}}>
                                     <li><span style={{fontWeight:"bold"}}>Name:</span> &nbsp; AK</li>
@@ -255,7 +299,7 @@ function Project1() {
                         </h4>
                         <div className="persona-space">
                         <div className="p-details">
-                            <img src={mom} alt="mom" />
+                            <img src={`${CDN}/images/images/mom.png`} alt="mom" />
                             <div className="details">
                                 <ul style={{listStyle:"none"}}>
                                     <li><span style={{fontWeight:"bold"}}>Name:</span> &nbsp; Sudha</li>
@@ -296,28 +340,28 @@ function Project1() {
                         <h2 className="mt-5"> Paper Wireframes</h2>
                         <p className="mt-2" style={{textAlign:"center", width:"80%"}}>The wireframes for home screen of with 5 different versions, keeping the user pain points about navigation, key feature in mind. </p>
                         <div className="pw-images" style={{display:"flex", flexDirection:"row", margin:"2rem"}}>
-                            <img src={vp1} alt=""paper-wireframe/>
-                            <img src={vp2} alt=""paper-wireframe/>
-                            <img src={vp3} alt=""paper-wireframe/>
+                            <img src={`${CDN}/images/images/vp1.jpg`} alt=""paper-wireframe/>
+                            <img src={`${CDN}/images/images/vp2.jpg`} alt=""paper-wireframe/>
+                            <img src={`${CDN}/images/images/vp3.jpg`} alt=""paper-wireframe/>
                         </div>
                     </div>
                     
                 </div>
 
 
-                <div className="lo-fi mt-5">
-                    <h2>Digital Wireframes</h2>
+                <div className="lo-fi mt-5" style={{height:"100vh"}}>
+                    <h2 className="mobile-trig">Digital Wireframes</h2>
                     <p className="mt-2" style={{textAlign:"center", width:"80%"}}>After ideating and drafting some paper wireframes, I created the initial designs for the CoVac app. These designs focused on delivering a smooth experience to users to help book a vaccination slot.</p>
-                    <img className="lo-fi-img mt-2" src={covaclofi} alt="Lo-fi-Mockup"/>
+                    <img className="lo-fi-img-1" src={`${CDN}/images/images/covac-lofi.svg`} alt="Lo-fi-Mockup"/>
                 </div>
                 
                 <div className="lo-fi mt-5">
                     <div className="lfp-bg">
                         <h2 className="mt-5"> Low-Fidelity Prototype</h2>
                         <p className="mt-2" style={{textAlign:"center", width:"80%"}}>To prepare for usability testing, I created a low-fidelity prototype that connected the user flow of searching a slot, selecting a slot and booking it.</p>
-                        <img className="mt-2 lofi-pimg" src={covaclofiw} alt="Lo-fi-Mockup"/>
+                        <img className="mt-2 lofi-pimg" src={`${CDN}/images/images/covac-lofi-w.PNG`} alt="Lo-fi-Mockup"/>
                         <div className="m53" style={{display:"flex", flexDirection:"row", margin:"5rem"}}>
-                            <img  style={{width:"18px", height:"auto", marginRight:"6px"}} src={link} alt="link-icon" />
+                            <img  style={{width:"18px", height:"auto", marginRight:"6px"}} src={`${CDN}/icons/link.svg`} alt="link-icon" />
                             <a target="_blank" href="https://xd.adobe.com/view/e9f3a8d6-b8fd-44a2-a117-4df2fc0564ce-bca0/?fullscreen&hints=off" rel="noreferrer">CoVac's low-fidelity prototype</a>
                         </div>
                     </div>
@@ -482,27 +526,27 @@ function Project1() {
                 <div className="lo-fi mt-5">
                     <h2>Mockups</h2>
                     <p className="mt-2" style={{textAlign:"center", width:"80%"}}>Based on the insights from the usability studies, I applied design changes like providing an adding light background for toggle button to differentiate between CTA button and toggle button.</p>
-                    <div className="usability">
-                        <div className="us-b-a">
+                    <div className="usability u-1">
+                        <div className="us-b-a us-b-a-left">
                             <p className="mt-2" style={{marginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>Before Usability Study</p>
-                            <img style={{height: "60vh"}} src={covaclofi} alt="Lo-fi-Mockup"/>
+                            <img style={{height: "60vh"}} src={`${CDN}/images/images/covac-lofi.svg`} alt="Lo-fi-Mockup"/>
                         </div>
-                        <div className="us-b-a">
+                        <div className="us-b-a us-b-a-right">
                             <p className="mt-2" style={{marginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>After Usability Study</p>
-                            <img style={{height: "60vh"}} src={covachifi} alt="Hi-fi-Mockup"/>
+                            <img style={{height: "60vh"}} src={`${CDN}/icons/covachifi.svg`} alt="Hi-fi-Mockup"/>
                         </div>
 
                     </div>
                     
                     <p className="mt-5" style={{textAlign:"center", width:"80%"}}>Additional design changes included adding all the filter options as toggle buttons instead of drop down menus, and added a card to provide a clear indication for the dates on which slots are available. </p>
-                    <div className="usability">
-                        <div className="us-b-a">
+                    <div className="usability u-2">
+                        <div className="us-b-a us-b-a-left-2">
                             <p className="mt-2" style={{marginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>Before Usability Study</p>
-                            <img style={{height: "60vh"}} src={covaclofi} alt="Lo-fi-Mockup"/>
+                            <img style={{height: "60vh"}} src={`${CDN}/images/images/covac-lofi.svg`} alt="Lo-fi-Mockup"/>
                         </div>
-                        <div className="us-b-a">
+                        <div className="us-b-a us-b-a-right-2">
                             <p className="mt-2" style={{marginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>After Usability Study</p>
-                            <img style={{height: "60vh"}} src={covachifi} alt="Hi-fi-Mockup"/>
+                            <img style={{height: "60vh"}} src={`${CDN}/icons/covachifi.svg`} alt="Hi-fi-Mockup"/>
                         </div>
 
                     </div>
@@ -512,13 +556,13 @@ function Project1() {
                 <div className="lo-fi mt-5">
                     <h2>Mobile Mockups</h2>
                     <div className="mockups mt-2">
-                        <img src={covachifi} alt="Hi-fi-Mockup"/>
-                        <img src={covacm1} alt="Hi-fi-Mockup"/>
-                        <img src={covacm2} alt="Hi-fi-Mockup"/>
-                        <img src={covacm3} alt="Hi-fi-Mockup"/>
+                        <img src={`${CDN}/icons/covachifi.svg`} alt="Hi-fi-Mockup"/>
+                        <img src={`${CDN}/images/images/covacm-1.svg`} alt="Hi-fi-Mockup"/>
+                        <img src={`${CDN}/images/images/covacm2.svg`} alt="Hi-fi-Mockup"/>
+                        <img src={`${CDN}/images/images/covacm3.svg`} alt="Hi-fi-Mockup"/>
                     </div>
                     <div className="m53" style={{display:"flex", flexDirection:"row", margin:"5rem"}}>
-                            <img style={{width:"18px", height:"auto", marginRight:"6px"}} src={link} alt="link-icon" />
+                            <img style={{width:"18px", height:"auto", marginRight:"6px"}} src={`${CDN}/icons/link.svg`} alt="link-icon" />
                             <a target="_blank" href="https://xd.adobe.com/view/75d45d38-1063-47fa-83fe-50d55a1c73c4-2087/screen/ff370e1b-cf51-44b1-90ec-2a903ad61091?fullscreen&hints=off" rel="noreferrer">CoVac's High-fidelity prototype</a>
                     </div>
                 </div>
@@ -650,7 +694,7 @@ function Project1() {
             </div>
         
             <div className="deck-container">
-                <a href={covacDeck} target="_blank" rel="noreferrer" className="deck-btn">Pitch Deck</a>
+                <a href={`${CDN}/Vaccine_Case_Study.pdf`} target="_blank" rel="noreferrer" className="deck-btn">Pitch Deck</a>
             </div>
 
             <div className="other-projects-container">
@@ -658,13 +702,13 @@ function Project1() {
                 <div className="other-projects">
                 <div className="project op">
                     <Link style={{cursor:"none"}} to="/rogalik-bakery">
-                        <img className="project-image second-p" src={rogalik} alt="" />
+                        <img className="project-image second-p" src={`${CDN}/images/images/rogalik-thumbnail.png`} alt="" />
                     </Link>
                 </div>
 
                 <div className="project op">
                     <Link style={{cursor:"none"}} to="/mia-restaurant">
-                        <img className="project-image third-p" src={mia} alt="" />
+                        <img className="project-image third-p" src={`${CDN}/images/images/mia-thumbnail.png`} alt="" />
                     </Link>
                 </div>
                 </div>

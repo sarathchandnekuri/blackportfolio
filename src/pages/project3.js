@@ -1,25 +1,13 @@
 import React, {useEffect } from 'react';
-import rp1 from '../images/rp1.jpg';
-import rp2 from '../images/rp2.jpg';
-import rp3 from '../images/rp3.jpg';
-import bakhifi from '../icons/bakhifi.svg';
-import baklofiw from '../images/baklofiw.PNG';
-import link from '../icons/link.svg';
-import bakhifia from '../icons/bakhifia.svg';
-import bakm1 from '../icons/bakm1.svg';
-import bakm2 from '../icons/bakm2.svg';
-import bakm3 from '../icons/bakm3.svg';
-import bakl3 from '../icons/bakl3.svg';
-import miaDeck from '../docs/Restaurant Case study.pdf';
-import ak from '../images/ak.png';
+
 import { Link } from 'react-router-dom';
-import rogalik from '../images/rogalik-thumbnail.png';
-import covac from '../images/covac-thumbnail.png';
-import phone2 from '../icons/phone2.svg';
 import gsap from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {motion} from 'framer-motion';
 import CursorFollower from '../components/cursorFollower';
+
+import { CDN } from '../config';
+
 
 
 function Project3() {
@@ -36,38 +24,77 @@ function Project3() {
                 trigger:".project-container p"
         },duration:0.5, opacity:0.5,x:"20px" })
 
-        gsap.to( ".lo-fi-img",{ 
-            scrollTrigger:{
-                trigger:".lo-fi-img",
-                scrub:true,
-                start:"10% 80%",
-                end:"+=254",
-        }, height:"80vh", marginLeft:"60px" })
 
-        gsap.utils.toArray(".h-1, .h-2, .h-3, .h-4").forEach(head =>{
-            ScrollTrigger.create({
-                trigger:head,
-                start:"top 50%",
-                end:"bottom 50%",
-                onEnter:() => gsap.to("body", {backgroundColor:"#122d34", color:"#FCE264", overwrite:'auto'}),
-                onLeave:() => gsap.to("body", {backgroundColor:"#f8feff", color:"#122d34", overwrite:'auto'}),
-    
-                onEnterBack:() => gsap.to("body", {backgroundColor:"#122d34", color:"#FCE264", overwrite:'auto'}),
-                onLeaveBack:() => gsap.to("body", {backgroundColor:"#f8feff", color:"#122d34", overwrite:'auto'})
-            });
-        });
+
+        gsap.to(".us-b-a-left",{
+            scrollTrigger:{
+                trigger:".us-b-a-left",
+                start:"top 70%",
+                scrub:true,
+                end:"+=120"
+        }, transform:"translate(0px, 0px)"})
+        gsap.to(".us-b-a-right",{
+            scrollTrigger:{
+                trigger:".us-b-a-left",
+                start:"top 70%",
+                scrub:true,
+                end:"+=120"
+        }, transform:"translate(0px, 0px)"})
+        gsap.to(".us-b-a-left p",{
+            scrollTrigger:{
+                trigger:".us-b-a-left p",
+                start:"top 70%",
+                scrub:true,
+                end:"+=120"
+        }, transform:"translate(0px, 0px)"})
+
+        gsap.to(".us-b-a-left-2",{
+            scrollTrigger:{
+                trigger:".us-b-a-left-2",
+                start:"top 70%",
+                scrub:true,
+                end:"+=120"
+        }, transform:"translate(0px, 0px)"})
+        gsap.to(".us-b-a-right-2",{
+            scrollTrigger:{
+                trigger:".us-b-a-left-2",
+                start:"top 70%",
+                scrub:true,
+                end:"+=120"
+        }, transform:"translate(0px, 0px)"})
+        gsap.to(".us-b-a-left-2 p",{
+            scrollTrigger:{
+                trigger:".us-b-a-left-2 p",
+                start:"top 70%",
+                scrub:true,
+                end:"+=120"
+        }, transform:"translate(0px, 0px)"})
 
     }, [])
 
 
+    function refreshST(){
+        ScrollTrigger.refresh(true);
+    }; 
+    setTimeout(()=>{
+        refreshST()
+    },2000) 
     
      
     return (
         <div><CursorFollower/>
+
+        {/* <MetaTags>
+            <title>Restaurant App by Sarath Chand</title>
+            <meta name="description" content="A Restaurant App is desinged by Sarath Chand as a Google UX Course Project" />
+            <meta property="og:title" content="Sarath Chand" />
+            <meta property="og:image" content={mia} />
+        </MetaTags> */}
+
         <motion.div
         animate={{opacity:1}}
         initial={{opacity:0}}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1.5 }}
         exit={{opacity:0}}
          className="homer">
             
@@ -76,18 +103,35 @@ function Project3() {
             <div className="p1"></div>
             <div className="p1-cover-image">
                 <div className="cover-bg">
-                    <img src={phone2} alt="" />
+                    <img src={`${CDN}/images/images/phone2.svg`} alt="" />
                     <div className="heading"> 
                         <div className="headingflex">
                         <p> Ca<span className="backtext">s</span>e&nbsp;</p><p>S<span className="backtext">t</span>udy                                
                         </p>
                         </div>
                         
-                        <h1 className="main-header">
-                            <span>Mia’s </span>
+                        <div className='heading-footer'>
+
+                        <div className='res-d-none'>
+                        <b style={{textDecoration:'underline'}}>Role:</b> UI & UX Designer
+                        </div>
+                        
+                        
+                        <div style={{display:'flex', alignItems:'center'}}>
+
+                        <b className='res-d-none' style={{textDecoration:'underline'}}>Project: </b>
+                        <h2 className="main-header">
+                            <span> Mia's </span>
                             <span>Restaurant </span>
                             <span>App </span>
-                        </h1>
+                        </h2>
+                        </div>
+
+                        <div className='res-d-none'>
+                             <a href={`${CDN}/Restaurant_Case_Study.pdf`} target="_blank" rel="noreferrer" className="deck-btn">PITCH DECK</a>
+                        </div>
+
+                        </div>
                     </div>
                     
                 </div>
@@ -229,7 +273,7 @@ function Project3() {
                     </h4>
                     <div className="persona-space">
                         <div className="p-details">
-                            <img src={ak} alt="ak" />
+                            <img src={`${CDN}/images/images/jaya.png`} alt="jayadeep avatar" />
                             <div className="details">
                                 <ul style={{listStyle:"none"}}>
                                     <li><span style={{fontWeight:"bold"}}>Name:</span> &nbsp; Jayadeep</li>
@@ -270,9 +314,9 @@ function Project3() {
                         <h2 className="mt-5"> Paper Wireframes</h2>
                         <p className="mt-2" style={{textAlign:"center", width:"80%"}}>Taking the time to draft iterations of each screen of the app on paper ensured that the elements that made it to digital wireframes would be well-suited to address user pain points. For the home screen, I prioritized a Recent Order to help users save time. </p>
                         <div className="pw-images" style={{display:"flex", flexDirection:"row", margin:"2rem"}}>
-                            <img src={rp1} alt=""paper-wireframe/>
-                            <img src={rp2} alt=""paper-wireframe/>
-                            <img src={rp3} alt=""paper-wireframe/>
+                            <img src={`${CDN}/images/images/rp1.jpg`} alt=""paper-wireframe/>
+                            <img src={`${CDN}/images/images/rp2.jpg`}  alt=""paper-wireframe/>
+                            <img src={`${CDN}/images/images/rp3.jpg`}  alt=""paper-wireframe/>
                         </div>
                     </div>
                     
@@ -282,16 +326,16 @@ function Project3() {
                 <div className="lo-fi mt-5">
                     <h2>Digital Wireframes</h2>
                     <p className="mt-2" style={{textAlign:"center", width:"80%"}}>As the initial design phase continued, I made sure to base screen designs on feedback and findings from the user research</p>
-                    <img className="lo-fi-img mt-2" src={bakhifi} alt="Lo-fi-Mockup"/>
+                    <img className="lo-fi-img mt-2" src={`${CDN}/icons/bakhifi.svg`} alt="Lo-fi-Mockup"/>
                 </div>
                 
                 <div className="lo-fi mt-5">
                     <div className="lfp-bg">
                         <h2 className="mt-5"> Low-Fidelity Prototype</h2>
                         <p className="mt-2" style={{textAlign:"center", width:"80%"}}>Using the completed set of digital wireframes, I created a low-fidelity prototype. The primary user flow I connected was ordering a recent order, so the prototype could be used in a usability study. </p>
-                        <img className="mt-2 lofi-pimg" src={baklofiw} alt="Lo-fi-Prototype"/>
+                        <img className="mt-2 lofi-pimg" src={`${CDN}/images/images/baklofiw.PNG`} alt="Lo-fi-Prototype"/>
                         <div className="m53" style={{display:"flex", flexDirection:"row", margin:"5rem"}}>
-                            <img  style={{width:"18px", height:"auto", marginRight:"6px"}} src={link} alt="link-icon" />
+                            <img  style={{width:"18px", height:"auto", marginRight:"6px"}} src={`${CDN}/icons/link.svg`} alt="link-icon" />
                             <a style={{textDecoration:"none"}} target="_blank" href="https://www.figma.com/file/sI7DXZYBG4yE52GgBNH7fE/Food-ordering-App?node-id=0%3A1" rel="noreferrer">Mia's low-fidelity prototype</a>
                         </div>
                     </div>
@@ -460,26 +504,26 @@ categories </p>
                     <h2>Mockups</h2>
                     <p className="mt-2" style={{textAlign:"center", width:"80%"}}>Early designs made difficult to locate Your Recent Order, but after the usability studies, I replaced the position and changed the font size from 14pt to 18pt and font weight from medium to bold. I also added Toggle to filter based on Vegan.</p>
                     <div className="usability">
-                        <div className="flexed">
+                        <div className="us-b-a us-b-a-left">
                             <p className="mt-2" style={{marginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>Before Usability Study</p>
-                            <img style={{height: "60vh"}} src={bakhifi} alt="Lo-fi-Mockup"/>
+                            <img style={{height: "60vh"}} src={`${CDN}/icons/bakhifi.svg`} alt="Lo-fi-Mockup"/>
                         </div>
-                        <div className="flexed">
+                        <div className="us-b-a us-b-a-right">
                             <p className="mt-2" style={{marginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>After Usability Study</p>
-                            <img style={{height: "60vh"}} src={bakhifia} alt="Hi-fi-Mockup"/>
+                            <img style={{height: "60vh"}} src={`${CDN}/icons/bakhifia.svg`} alt="Hi-fi-Mockup"/>
                         </div>
 
                     </div>
                     
                     <p className="mt-5" style={{textAlign:"center", width:"80%"}}>During second usability study users wanted to know more about the delivery guy, not just the name so I added a profile, star rating and number of deliveries. And users confused between the timer of Add Now button and expected time. So I changed the font weight and made Add now button as Secondary CTA.</p>
-                    <div className="usability">
-                        <div className="flexed">
-                            <p className="mt-2" style={{marginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>Before Usability Study</p>
-                            <img style={{height: "60vh"}} src={bakl3} alt="Lo-fi-Mockup"/>
+                    <div className="usability-2">
+                        <div className="us-b-a us-b-a-left-2">
+                            <p className="mt-2" style={{arginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>Before Usability Study</p>
+                            <img style={{height: "60vh"}} src={`${CDN}/icons/bakl3.svg`} alt="Lo-fi-Mockup"/>
                         </div>
-                        <div className="flexed">
+                        <div className="us-b-a us-b-a-right-2">
                             <p className="mt-2" style={{marginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>After Usability Study</p>
-                            <img style={{height: "60vh"}} src={bakm3} alt="Hi-fi-Mockup"/>
+                            <img style={{height: "60vh"}} src={`${CDN}/icons/bakm3.svg`} alt="Hi-fi-Mockup"/>
                         </div>
 
                     </div>
@@ -489,13 +533,13 @@ categories </p>
                 <div className="lo-fi mt-5">
                     <h2>Mobile Mockups</h2>
                     <div className="mockups mt-2">
-                        <img src={bakhifia} alt="Hi-fi-Mockup"/>
-                        <img src={bakm1} alt="Hi-fi-Mockup"/>
-                        <img src={bakm2} alt="Hi-fi-Mockup"/>
-                        <img src={bakm3} alt="Hi-fi-Mockup"/>
+                        <img src={`${CDN}/icons/bakhifia.svg`} alt="Hi-fi-Mockup"/>
+                        <img src={`${CDN}/icons/bakm1.svg`} alt="Hi-fi-Mockup"/>
+                        <img src={`${CDN}/icons/bakm2.svg`} alt="Hi-fi-Mockup"/>
+                        <img src={`${CDN}/icons/bakm3.svg`} alt="Hi-fi-Mockup"/>
                     </div>
                     <div className="m53" style={{display:"flex", flexDirection:"row", margin:"5rem"}}>
-                            <img style={{width:"18px", height:"auto", marginRight:"6px"}} src={link} alt="link-icon" />
+                            <img style={{width:"18px", height:"auto", marginRight:"6px"}} src={`${CDN}/icons/link.svg`} alt="link-icon" />
                             <a target="_blank" href="https://www.figma.com/file/sI7DXZYBG4yE52GgBNH7fE/Food-ordering-App?node-id=231%3A1322" rel="noreferrer">Mia's High-fidelity prototype</a>
                     </div>
                 </div>
@@ -626,7 +670,7 @@ categories </p>
             </div>
         
             <div className="deck-container">
-                <a href={miaDeck} target="_blank" rel="noreferrer" className="deck-btn">Pitch Deck</a>
+                <a href={`${CDN}/Restaurant_Case_Study.pdf`} target="_blank" rel="noreferrer" className="deck-btn">Pitch Deck</a>
             </div>
 
             <div className="other-projects-container">
@@ -634,13 +678,13 @@ categories </p>
                 <div className="other-projects">
                 <div className="project op">
                     <Link style={{cursor:"none"}} to="/covac">
-                        <img className="project-image second-p" src={covac} alt="" />
+                        <img className="project-image second-p" src={`${CDN}/images/images/covac-thumbnail.png`} alt="" />
                     </Link>
                 </div>
 
                 <div className="project op">
                     <Link style={{cursor:"none"}} to="/rogalik-bakery">
-                        <img className="project-image third-p" src={rogalik} alt="" />
+                        <img className="project-image third-p" src={`${CDN}/images/images/rogalik-thumbnail.png`} alt="" />
                     </Link>
                 </div>
                 </div>

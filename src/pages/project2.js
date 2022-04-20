@@ -1,28 +1,20 @@
 import React, {useEffect } from 'react';
-import bp1 from '../images/bp1.jpg';
-import bp2 from '../images/bp2.jpg';
-import bp3 from '../images/bp3.jpg';
-import bakaft1 from '../images/baakaft1.png';
-import bakbef2 from '../images/bakbef2.png';
-import bakbef1 from '../images/bakbef1.png';
-import bakaft2 from '../images/bakaft2.png';
-import roglofiw from '../images/roglofiw.PNG';
-import link from '../icons/link.svg';
-import vinnu from '../images/vinnu.png';
+
+
 import { Link } from 'react-router-dom';
-import mia from '../images/mia-thumbnail.png';
-import covac from '../images/covac-thumbnail.png';
-import rogalikDeck from '../docs/Bakery Case Study.pdf';
-import bakImg from '../images/bakImg.png';
+
 import gsap from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
 import {motion} from 'framer-motion';
 import CursorFollower from '../components/cursorFollower';
 
+import { CDN } from '../config';
+
+
 
 function Project2() {
 
-
+   
     useEffect( () => {
         gsap.registerPlugin(ScrollTrigger);
 
@@ -33,38 +25,40 @@ function Project2() {
                 trigger:".project-container p"
         },duration:0.5, opacity:0.5,x:"20px" })
 
-        gsap.to( ".lo-fi-img",{ 
+        gsap.from( ".lo-fi-img",{ 
             scrollTrigger:{
                 trigger:".lo-fi-img",
                 start:"10% 80%",
                 scrub:true,
                 end:"+=254",
-        }, width:"90vw", marginLeft:"0px" })
+        }, height:"180vh", marginLeft:"0px" })
 
-        gsap.utils.toArray(".h-1, .h-2, .h-3, .h-4").forEach(head =>{
-            ScrollTrigger.create({
-                trigger:head,
-                start:"top 50%",
-                end:"bottom 50%",
-                onEnter:() => gsap.to("body", {backgroundColor:"#122d34", color:"#FCE264", overwrite:'auto'}),
-                onLeave:() => gsap.to("body", {backgroundColor:"#f8feff", color:"#122d34", overwrite:'auto'}),
-    
-                onEnterBack:() => gsap.to("body", {backgroundColor:"#122d34", color:"#FCE264", overwrite:'auto'}),
-                onLeaveBack:() => gsap.to("body", {backgroundColor:"#f8feff", color:"#122d34", overwrite:'auto'})
-            });
-        })
         
     }, [])
 
 
+    function refreshST(){
+        ScrollTrigger.refresh(true);
+    }; 
+    setTimeout(()=>{
+        refreshST()
+    },2000) 
     
      
     return (
         <div><CursorFollower/>
+
+{/* <MetaTags>
+            <title>Responsive Website Design by Sarath Chand</title>
+            <meta name="description" content="A Responsive website is desinged by Sarath Chand as a Google UX Course Project" />
+            <meta property="og:title" content="Sarath Chand" />
+            <meta property="og:image" content={rogalik} />
+        </MetaTags> */}
+
         <motion.div
         animate={{opacity:1}}
         initial={{opacity:0}}
-        transition={{ duration: 1 }}
+        transition={{ duration: 1.5 }}
         exit={{opacity:0}}
          className="homer">
             {/* <cursorFollower/> */}
@@ -73,18 +67,35 @@ function Project2() {
             <div className="p1"></div>
             <div className="p1-cover-image">
                 <div className="cover-bg ">
-                    <img className="mt-180" src={bakImg} alt="" />
+                    <img className="mt-180" src={`${CDN}/images/images/bakImg.png`} alt="" />
                     <div className="heading"> 
                         <div className="headingflex">
                         <p> Ca<span className="backtext">s</span>e&nbsp;</p><p>S<span className="backtext">t</span>udy                                
                         </p>
                         </div>
                         
-                        <h1 className="main-header">
-                            <span>Bakery </span>
+                        <div className='heading-footer'>
+
+                        <div className='res-d-none'>
+                        <b style={{textDecoration:'underline'}}>Role:</b> UI & UX Designer
+                        </div>
+                        
+                        
+                        <div style={{display:'flex', alignItems:'center'}}>
+
+                        <b className='res-d-none' style={{textDecoration:'underline'}}>Project: </b>
+                        <h2 className="main-header">
+                            <span> Bakery </span>
                             <span>Website </span>
                             <span>Design </span>
-                        </h1>
+                        </h2>
+                        </div>
+
+                        <div className='res-d-none'>
+                             <a href={`${CDN}/Bakery_Case_Study.pdf`} target="_blank" rel="noreferrer" className="deck-btn">PITCH DECK</a>
+                        </div>
+
+                        </div>
                     </div>
                     
                 </div>
@@ -226,7 +237,7 @@ function Project2() {
                     Special Moments are incomplete without cakes, customized cakes are fun</h4>
                     <div className="persona-space">
                         <div className="p-details">
-                            <img style={{transform:"scale(0.8)"}} src={vinnu} alt="ak" />
+                            <img style={{transform:"scale(0.8)"}} src={`${CDN}/images/images/vinnu.png`} alt="ak" />
                             <div className="details">
                                 <ul style={{listStyle:"none"}}>
                                     <li><span style={{fontWeight:"bold"}}>Name:</span> &nbsp; Vineeth</li>
@@ -267,9 +278,9 @@ function Project2() {
                         <h2 className="mt-5"> Paper Wireframes</h2>
                         <p className="mt-2" style={{textAlign:"center", width:"80%"}}>Next, I sketched out paper wireframes for each screen in my website, keeping the user pain points about navigation, browsing, and customization flow in mind. </p>
                         <div className="pw-images" style={{display:"flex", flexDirection:"row", margin:"2rem"}}>
-                            <img src={bp1} alt=""paper-wireframe/>
-                            <img src={bp2} alt=""paper-wireframe/>
-                            <img src={bp3} alt=""paper-wireframe/>
+                            <img src={`${CDN}/images/images/bp1.jpg`} alt=""paper-wireframe/>
+                            <img src={`${CDN}/images/images/bp2.jpg`} alt=""paper-wireframe/>
+                            <img src={`${CDN}/images/images/bp3.jpg`} alt=""paper-wireframe/>
                         </div>
                     </div>
                     
@@ -279,16 +290,16 @@ function Project2() {
                 <div className="lo-fi mt-5">
                     <h2>Digital Wireframes</h2>
                     <p className="mt-2" style={{textAlign:"center", width:"80%"}}>Moving from paper to digital wireframes made it easy to understand how the redesign could help address user pain points and improve the user experience. </p>
-                    <img className="lo-fi-img mt-2" src={bakImg} alt="Lo-fi-Mockup"/>
+                    <img className="lo-fi-img mt-2" src={`${CDN}/images/images/bakImg.png`} alt="Lo-fi-Mockup"/>
                 </div>
                 
                 <div className="lo-fi mt-5">
                     <div className="lfp-bg">
                         <h2 className="mt-5"> Low-Fidelity Prototype</h2>
                         <p className="mt-2" style={{textAlign:"center", width:"80%"}}>To create a low-fidelity prototype, I connected all of the screens involved in the primary user flow of adding a cake to the cart and checking out.</p>
-                        <img className="mt-2 lofi-pimg" src={roglofiw} alt="Lo-fi-Mockup"/>
+                        <img className="mt-2 lofi-pimg" src={`${CDN}/images/images/roglofiw.PNG`} alt="Lo-fi-Mockup"/>
                         <div className="m53" style={{display:"flex", flexDirection:"row", margin:"5rem"}}>
-                            <img  style={{width:"18px", height:"auto", marginRight:"6px"}} src={link} alt="link-icon" />
+                            <img  style={{width:"18px", height:"auto", marginRight:"6px"}} src={`${CDN}/icons/link.svg`} alt="link-icon" />
                             <a target="_blank" href="https://xd.adobe.com/view/ddda0a1d-6364-4cce-bfaa-b9febdcaef28-8889/?fullscreen&hints=off" rel="noreferrer">CoVac's low-fidelity prototype</a>
                         </div>
                     </div>
@@ -454,32 +465,32 @@ function Project2() {
                     <h2>Mockups</h2>
                     <p className="mt-2" style={{textAlign:"center", width:"80%"}}>Based on the insights from the usability study, I made changes to improve the Customization flow. The changes I made was creating a card for each customization category and in there radio buttons for single feild and checkbox for multiple feilds weree added. This allowed users more freedom to choose customization option without going through a complicated process.</p>
                     <div className="usability just">
-                        <div className="flexed">
+                        <div className="us-b-a">
                             <p className="mt-2" style={{marginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>Before Usability Study</p>
-                            <img className="desktoplofi" src={bakbef1} alt="Lo-fi-Mockup"/>
+                            <img className="desktoplofi" src={`${CDN}/images/images/bakbef1.png`} alt="Lo-fi-Mockup"/>
                         </div>
-                        <div className="flexed">
+                        <div className="us-b-a">
                             <p className="mt-2" style={{marginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>After Usability Study</p>
-                            <img className="desktoplofi" src={bakaft1} alt="Hi-fi-Mockup"/>
+                            <img className="desktoplofi" src={`${CDN}/images/images/baakaft1.png`} alt="Hi-fi-Mockup"/>
                         </div>
 
                     </div>
                     
                     <p className="mt-5" style={{textAlign:"center", width:"80%"}}>To make the preview screen even easier for users, I added back button to go homescreen and displayed weights that are available with color contrast. </p>
                     <div className="usability just">
-                        <div className="flexed">
+                        <div className="us-b-a">
                             <p className="mt-2" style={{marginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>Before Usability Study</p>
-                            <img className="desktoplofi" src={bakbef2} alt="Lo-fi-Mockup"/>
+                            <img className="desktoplofi" src={`${CDN}/images/images/bakbef2.png`} alt="Lo-fi-Mockup"/>
                         </div>
-                        <div className="flexed">
+                        <div className="us-b-a">
                             <p className="mt-2" style={{marginLeft:"-32px", fontWeight:"600", fontSize:"0.9rem"}}>After Usability Study</p>
-                            <img className="desktoplofi" src={bakaft2} alt="Hi-fi-Mockup"/>
+                            <img className="desktoplofi" src={`${CDN}/images/images/bakaft2.png`} alt="Hi-fi-Mockup"/>
                         </div>
 
                     </div>
                 
                     <div className="m53" style={{display:"flex", flexDirection:"row", margin:"5rem"}}>
-                            <img style={{width:"18px", height:"auto", marginRight:"6px"}} src={link} alt="link-icon" />
+                            <img style={{width:"18px", height:"auto", marginRight:"6px"}} src={`${CDN}/icons/link.svg`} alt="link-icon" />
                             <a target="_blank" href="https://xd.adobe.com/view/5c14edec-774c-498a-a503-46671b57b8e6-0947/?fullscreen" rel="noreferrer">CoVac's High-fidelity prototype</a>
                     </div>
                 </div>
@@ -613,7 +624,7 @@ function Project2() {
             </div>
         
             <div className="deck-container">
-                <a href={rogalikDeck} target="_blank" rel="noreferrer" className="deck-btn">Pitch Deck</a>
+                <a href={`${CDN}/Bakery_Case_Study.pdf`} target="_blank" rel="noreferrer" className="deck-btn">Pitch Deck</a>
             </div>
 
             <div className="other-projects-container">
@@ -621,13 +632,13 @@ function Project2() {
                 <div className="other-projects">
                 <div className="project op">
                     <Link style={{cursor:"none"}} to="/covac">
-                        <img className="project-image second-p" src={covac} alt="" />
+                        <img className="project-image second-p" src={`${CDN}/images/images/covac-thumbnail.png`} alt="" />
                     </Link>
                 </div>
 
                 <div className="project op">
                     <Link style={{cursor:"none"}} to="/mia-restaurant">
-                        <img className="project-image third-p" src={mia} alt="" />
+                        <img className="project-image third-p" src={`${CDN}/images/images/mia-thumbnail.png`} alt="" />
                     </Link>
                 </div>
                 </div>

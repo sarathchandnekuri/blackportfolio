@@ -1,12 +1,16 @@
 import React,{useEffect} from 'react';
-import gototop from '../icons/gototop.svg';
+
+import { CDN } from '../config';
 
 function GoToTop(){
 
     useEffect(()=>{
-        window.addEventListener("scroll", function(){
-            document.getElementById("goToTop").classList.toggle("goappear", window.scrollY>600);
-        })
+        if(document.getElementById("goToTop")){
+            window.addEventListener("scroll", function(){
+                document.getElementById("goToTop").classList.toggle("goappear", window.scrollY>600);
+            })
+        }
+       
 
         
         document.getElementById("goToTop").addEventListener("click", function(){
@@ -19,7 +23,7 @@ function GoToTop(){
 
     return (
         <div id="goToTop" className="go-to-top">
-            <img src={gototop} alt="" />
+            <img src={`${CDN}/icons/gototop.svg`} alt="" />
         </div>
 
     );

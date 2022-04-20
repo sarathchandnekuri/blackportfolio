@@ -10,36 +10,38 @@ import Project2 from "./pages/project2";
 import Project3 from "./pages/project3";
 import Contact from "./pages/contact";
 import Preloader from "./pages/preloader";
-// import CursorFollower from "./components/cursorFollower";
 import { AnimatePresence } from 'framer-motion';
 import Error from "./components/error";
+import { BrowserRouter } from "react-router-dom";
 // import Network from "./components/network";
 
 
 function App() {
     
     const location = useLocation();
-    // const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false);
 
-    // useEffect(()=>{
-    //     setLoading(true)
-    //     setTimeout(()=>{
-    //         setLoading(false)
-    //     },4000)
-    // },[])
+    useEffect(()=>{
+        setLoading(true)
+        setTimeout(()=>{
+            setLoading(false)
+        },4000)
+    },[])
+
+   
 
     return (  
+        <BrowserRouter>
+            <div className="container">
+                {
+                    loading ? (<Preloader loading={loading} />)
 
-        <div className="container">
-            {/* {
-                loading ? (<Preloader loading={loading} />)
-
-                :
-        
-                (<div> */}
-                
-                {/* <CursorFollower/> */}
-                <NavBar/>
+                    :
+            
+                    (<div>
+                    
+                    {/* <CursorFollower/> */}
+                    <NavBar/>
                     <AnimatePresence exitBeforeEnter initial={false} >
                         <Switch location={location} key={location.pathname}>
                             <Route exact path = "/" component={Home}/>
@@ -52,12 +54,11 @@ function App() {
                             <Route component={Error} />
                         </Switch>
                     </AnimatePresence>   
-                <GoToTop/>
-                {/* </div>) */}
-             {/* } */}
-            
-         </div>
-
+                    <GoToTop/>
+                </div>)
+                } 
+            </div>
+        </BrowserRouter>
         
     );
 }

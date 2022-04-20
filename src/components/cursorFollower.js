@@ -1,6 +1,6 @@
 import React,{ useEffect } from 'react';
-import goto from '../icons/goto.svg';
-import hire from '../icons/hireme.svg';
+
+import { CDN } from '../config';
 
 function CursorFollower() {
 
@@ -28,7 +28,7 @@ function CursorFollower() {
         })
 
         const projects = document.querySelectorAll(".project");
-        const job = document.querySelector(".job");
+        const talk = document.querySelector(".talk");
         const caseSpan = document.querySelector(".case");
         const hireSpan = document.querySelector(".hire");
 
@@ -44,13 +44,13 @@ function CursorFollower() {
         });
 
 
-        if(job){
-            job.addEventListener("mouseenter", function(){
-                job.style.cursor = "none";
+        if(talk){
+            talk.addEventListener("mouseenter", function(){
+                talk.style.cursor = "none";
                 cursorFollower.classList.add("activehire");
                 hireSpan.style.opacity = 1;
             });
-            job.addEventListener("mouseleave", function(){
+            talk.addEventListener("mouseleave", function(){
                 cursorFollower.classList.remove("activehire");
                 hireSpan.style.opacity = 0;
             });
@@ -68,10 +68,10 @@ function CursorFollower() {
     return(
         <div className="cursor-follower">
             <span className="case">
-                <img src={goto} alt="" />Case Study
+                <img src={`${CDN}/icons/goto.svg`} alt="" />Case Study
             </span>
             <span className="hire">
-                <img src={hire} alt="" />Hire Me
+                <img src={`${CDN}/icons/hireme.svg`} alt="" />Let's Talk
             </span>
             
         </div>

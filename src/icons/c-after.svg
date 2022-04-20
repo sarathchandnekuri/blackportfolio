@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="125" height="125" viewBox="0 0 125 125">
-  <g id="c-after" transform="translate(-4314 -4596)">
-    <circle id="c-inner" cx="62.5" cy="62.5" r="62.5" transform="translate(4314 4596)" fill="#fce264"/>
-    <g id="c-outer" transform="translate(4377 4667) rotate(-90)" fill="none">
-      <path d="M8.5,0,17,62H0Z" stroke="none"/>
-      <path d="M 8.499996185302734 0 L 16.99999618530273 62 L -3.814697265625e-06 62 L 8.499996185302734 0 Z" stroke="none" fill="#122d34"/>
-    </g>
-  </g>
-</svg>

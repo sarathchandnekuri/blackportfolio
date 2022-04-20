@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react';
 import {NavLink, Link} from 'react-router-dom';
-import pdf from '../docs/sarath_resume.pdf';
 import gsap from 'gsap';
+import {CDN} from '../config';
 
 
 function NavBar() {
@@ -35,18 +35,46 @@ function NavBar() {
             work.classList.add("active-menu");
             contact.classList.remove("active-menu");
             about.classList.remove("active-menu");
+            if(window.screen.width < 1024){
+                setTimeout(function(){
+                    menu.classList.remove("slide");
+                    body.classList.toggle("stop-scrolling");
+                    document.getElementById("Rectangle_136").classList.toggle("r136");
+                    document.getElementById("Rectangle_137").classList.toggle("r137");
+                    document.getElementById("Rectangle_138").classList.toggle("r138");
+                },1000)
+                
+            }
         })
 
         contact.addEventListener("click",function(){
             work.classList.remove("active-menu");
             contact.classList.add("active-menu");
             about.classList.remove("active-menu");
+            if(window.screen.width < 1024){
+                setTimeout(function(){
+                    menu.classList.remove("slide");
+                    body.classList.toggle("stop-scrolling");
+                    document.getElementById("Rectangle_136").classList.toggle("r136");
+                    document.getElementById("Rectangle_137").classList.toggle("r137");
+                    document.getElementById("Rectangle_138").classList.toggle("r138");
+                },1000)
+            }
         })
 
         about.addEventListener("click",function(){
             work.classList.remove("active-menu");
             contact.classList.remove("active-menu");
             about.classList.add("active-menu");
+            if(window.screen.width < 1024){
+                setTimeout(function(){
+                    menu.classList.remove("slide");
+                    body.classList.toggle("stop-scrolling");
+                    document.getElementById("Rectangle_136").classList.toggle("r136");
+                    document.getElementById("Rectangle_137").classList.toggle("r137");
+                    document.getElementById("Rectangle_138").classList.toggle("r138");
+                },1000)
+            }
         })
 
         const logo = document.querySelector("#logo");
@@ -74,8 +102,8 @@ function NavBar() {
         <div className="home">
             <div className="navbar">
                 
-                <Link className="logoC" to="/">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="221.536" height="187.5" viewBox="0 0 221.536 187.5">
+                <Link aria-label="SC Logo" className="logoC" to="/">
+                    <svg style={{marginBottom:"-32px"}} xmlns="http://www.w3.org/2000/svg" width="221.536" height="187.5" viewBox="0 0 221.536 187.5">
                     <g id="logo" transform="translate(-4197.231 -4390.5)">
                         <g id="Subtraction_9" className="sub9" data-name="Subtraction 9" transform="translate(4197.595 4390.5)" fill="none">
                         <path d="M62.137,125A62.516,62.516,0,0,1,37.809,4.912a62.445,62.445,0,0,1,68.6,13.468L62.636,62.5l43.768,44.12A62.3,62.3,0,0,1,62.137,125Z" stroke="none"/>
@@ -106,14 +134,14 @@ function NavBar() {
 
 
                 <ul className="menu">
-                    <li><NavLink exact activeClassName="active-menu" className="menu-bg work" to="/">Work</NavLink></li>
-                    <li><a className="menu-bg resume" href = {pdf} target = "_blank" rel="noreferrer" >Resume</a></li>
+                    <li><NavLink exact activeClassName="active-menu" className="menu-bg work" to="/">Home</NavLink></li>
+                    <li><a className="menu-bg resume" href = {`${CDN}/Sarath_Resume-min.pdf`} target = "_blank" rel="noreferrer" >Resume</a></li>
                     <li><NavLink exact activeClassName="active-menu" className="menu-bg contact" to="/contact">Contact</NavLink></li>
                     <li><NavLink exact activeClassName="active-menu" className="menu-bg about" to="/about">About Me</NavLink></li>
                 </ul>
             </div>
             
-            </div>
+        </div>
         
     );
 }

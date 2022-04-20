@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
-  <g id="book" transform="translate(-3812 -2683)">
-    <circle id="Ellipse_52" data-name="Ellipse 52" cx="18" cy="18" r="18" transform="translate(3812 2683)" fill="#122d34"/>
-    <path id="Icon_ionic-md-book" data-name="Icon ionic-md-book" d="M21.558,5.645,13.375,7.19,5.192,5.645A1.7,1.7,0,0,0,3.375,7.461V19.27c0,1,.769,1.575,1.817,1.816l8.183,1.541,8.183-1.546c1.048-.241,1.817-.816,1.817-1.816V7.461A1.7,1.7,0,0,0,21.558,5.645Zm0,13.62-7.269,1.546V9l7.269-1.546Zm-9.1,1.546L5.192,19.265V7.461l7.269,1.546Z" transform="translate(3816.625 2687.373)" fill="#fce264"/>
-    <line id="Line_26" data-name="Line 26" y1="1" x2="4" transform="translate(3832.5 2698)" fill="none" stroke="#fce264" stroke-width="1"/>
-    <line id="Line_27" data-name="Line 27" y1="1" x2="4" transform="translate(3832.5 2701)" fill="none" stroke="#fce264" stroke-width="1"/>
-    <line id="Line_25" data-name="Line 25" y1="1" x2="4" transform="translate(3832.5 2704)" fill="none" stroke="#fce264" stroke-width="1"/>
-  </g>
-</svg>
